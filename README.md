@@ -103,6 +103,7 @@ Linux 下读写串口需要加入 `dialout`（Debian/Ubuntu）或 `uucp`（Arch�
 ## 文档
 
 - [本机接口与寄存器读写](docs/API.md)
+- [MCP server（供 AI agent 使用）](mcp/README.md)
 - [通信架构与调度](docs/ARCHITECTURE.md)
 - [Android 集成](docs/ANDROID.md)
 - [验证范围与结果](docs/VALIDATION.md)
@@ -119,6 +120,7 @@ Linux 下读写串口需要加入 `dialout`（Debian/Ubuntu）或 `uucp`（Arch�
 | `packaging/` | systemd 单元、Windows 服务安装脚本 |
 | `cmake/` | 交叉编译工具链 |
 | `examples/` | 客户端示例 |
+| `mcp/` | MCP server，让 AI agent 读取和控制电源 |
 
 ## 许可证
 

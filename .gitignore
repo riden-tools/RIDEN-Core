@@ -6,3 +6,5 @@
 /android/local.properties
 __pycache__/
 *.pyc
+.venv/
+uv.lock
