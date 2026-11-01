@@ -2,7 +2,7 @@
 
 RIDEN 可调电源（RD60xx / RK 系列）的 Modbus RTU 通信内核，用 C11 编写。它为 Linux、Windows 和 Android 上位机提供统一的设备连接、寄存器读写、采样缓存和调度，可以作为本机后台服务（`riden-cored`）运行，也可以作为共享库或 Android AAR 嵌入。
 
-上位机示例：[RIDEN-Desktop](https://github.com/beilusm/RIDEN-Desktop)（Electron）。
+上位机示例：[RIDEN-Desktop](https://github.com/riden-tools/RIDEN-Desktop)（Electron）。
 
 ## 功能
 
