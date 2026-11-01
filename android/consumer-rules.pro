@@ -1,0 +1,2 @@
+-keep class io.riden.core.RidenCore { *; }
+-keepclassmembers class * implements io.riden.core.RidenCore$Transport { public int read(byte[], int); public int write(byte[], int); }

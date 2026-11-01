@@ -1,0 +1,13 @@
+[Unit]
+Description=RIDEN-Core device daemon
+
+[Service]
+Type=simple
+Environment=RIDEN_DEVICE=/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0
+EnvironmentFile=-%h/.config/riden-core/daemon.env
+ExecStart=%h/.local/bin/riden-cored --device ${RIDEN_DEVICE} --mode hot
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

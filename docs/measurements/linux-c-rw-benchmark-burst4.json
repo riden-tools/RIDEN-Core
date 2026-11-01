@@ -1,0 +1,120 @@
+{
+  "model": 60067,
+  "device": "/dev/ttyUSB0",
+  "writes_preserved_values": {
+    "8": 420,
+    "9": 6100,
+    "15": 1,
+    "18": 1,
+    "19": 0,
+    "72": 4
+  },
+  "readback_values": {
+    "8": 420,
+    "9": 6100,
+    "15": 1,
+    "18": 1,
+    "19": 0
+  },
+  "single_0x06_same_value": {
+    "HR8": {
+      "count": 20,
+      "min_ms": 285.061655,
+      "p50_ms": 287.23347750000005,
+      "p95_ms": 287.549053,
+      "p99_ms": 287.549053,
+      "max_ms": 289.985525,
+      "mean_ms": 287.2490261
+    },
+    "HR9": {
+      "count": 20,
+      "min_ms": 284.361479,
+      "p50_ms": 287.222914,
+      "p95_ms": 287.510304,
+      "p99_ms": 287.510304,
+      "max_ms": 287.830145,
+      "mean_ms": 287.1136304
+    },
+    "HR72": {
+      "count": 20,
+      "min_ms": 286.649545,
+      "p50_ms": 287.119779,
+      "p95_ms": 287.318083,
+      "p99_ms": 287.318083,
+      "max_ms": 287.526093,
+      "mean_ms": 287.09185105
+    }
+  },
+  "multi_0x10_HR8_9_same_values": {
+    "count": 30,
+    "min_ms": 284.737553,
+    "p50_ms": 287.269561,
+    "p95_ms": 287.773732,
+    "p99_ms": 287.789047,
+    "max_ms": 288.214314,
+    "mean_ms": 287.18974073333334
+  },
+  "concurrent_0x06_same_value": {
+    "clients": 4,
+    "writes": 40,
+    "wall_s": 17.09853335099615,
+    "completed_transactions": 129,
+    "failures_delta": 0
+  },
+  "sampling_phases": {
+    "idle": {
+      "frames": 50,
+      "sequence_gaps": 0,
+      "intervals": {
+        "min_ms": 141.254475,
+        "p50_ms": 143.85397,
+        "p95_ms": 144.096798,
+        "p99_ms": 144.205113,
+        "max_ms": 146.327531,
+        "mean_ms": 143.8632338979592
+      },
+      "wall_s": 7.050623226998141
+    },
+    "single_0x06": {
+      "frames": 130,
+      "sequence_gaps": 0,
+      "intervals": {
+        "min_ms": 142.169921,
+        "p50_ms": 144.119401,
+        "p95_ms": 287.380709,
+        "p99_ms": 287.653435,
+        "max_ms": 288.758396,
+        "mean_ms": 210.526859124031
+      },
+      "wall_s": 27.15838570699998
+    },
+    "batch_0x10": {
+      "frames": 90,
+      "sequence_gaps": 0,
+      "intervals": {
+        "min_ms": 143.533425,
+        "p50_ms": 143.959699,
+        "p95_ms": 287.423807,
+        "p99_ms": 287.598322,
+        "max_ms": 287.668351,
+        "mean_ms": 192.20523711235955
+      },
+      "wall_s": 17.105555465997895
+    },
+    "concurrent_0x06": {
+      "frames": 80,
+      "sequence_gaps": 0,
+      "intervals": {
+        "min_ms": 143.358701,
+        "p50_ms": 143.914894,
+        "p95_ms": 717.331735,
+        "p99_ms": 717.352134,
+        "max_ms": 717.480474,
+        "mean_ms": 216.4458556835443
+      },
+      "wall_s": 17.098463361995528
+    }
+  },
+  "writes_enabled": true,
+  "only_same_existing_values_written": true
+}
