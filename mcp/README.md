@@ -19,7 +19,7 @@ Agent ⇄ stdio ⇄ riden-mcp ⇄ TCP 127.0.0.1:19606 ⇄ riden-cored ⇄ 串口
 | `set_voltage` | 设定电压，写入后回读状态 | `--enable-writes` |
 | `set_current` | 设定限流，写入后回读状态 | `--enable-writes` |
 | `set_output` | 打开或关闭输出；设定值超出上限时拒绝打开 | `--enable-writes` |
-| `recall_preset` | 把 M1–M9 的电压和电流写入设定值，不改 OVP/OCP | `--enable-writes` |
+| `recall_preset` | 写 HR19 切换到 M1–M9，同时使用对应组的 OVP/OCP | `--enable-writes` |
 
 写入工具带 `destructiveHint`，客户端一般会在每次调用前请你确认。没有提供写原始寄存器、OVP/OCP 或背光的工具。
 

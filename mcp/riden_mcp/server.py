@@ -207,16 +207,14 @@ def build_server(daemon: Daemon, limits: Limits | None) -> MCPServer:
 
     @server.tool(annotations=CONTROL)
     async def recall_preset(slot: int) -> dict[str, Any]:
-        """Load the voltage and current of preset M1–M9 into the setpoints.
-        OVP/OCP are left unchanged."""
+        """Switch the device to data group M1–M9, including its OVP/OCP."""
         if slot not in PRESETS:
             raise ToolError("slot must be 1–9")
         p, _ = await writable()
         raw_v, raw_i = await call(daemon.read, 80 + slot * 4, 2, 0)
         limits.check(p.volts(raw_v), p.amps(raw_i), p)
-        # Some firmware ignores HR19, so the preset values are written directly.
-        await write(8, raw_v, f"M{slot} voltage")
-        await write(9, raw_i, f"M{slot} current")
+        await write(19, slot, f"switch to M{slot}")
+        await anyio.sleep(0.6)
         return await readback()
 
     return server

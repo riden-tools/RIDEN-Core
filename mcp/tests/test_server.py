@@ -86,6 +86,8 @@ class Device:
                     )
                 elif fn == 6:
                     self.reg[start] = value
+                    if start == 19:
+                        self.reg[8:10] = self.reg[80 + value * 4:82 + value * 4]
                     self.writes.append((start, value))
                     resp = req[:6]
                 else:
@@ -183,7 +185,7 @@ async def read_write(device):
 
         s = (await call(client, "set_output", enabled=False)).structured_content
         assert s["output_enabled"] is False, s
-    assert device.writes == [(9, 400), (8, 330), (18, 1), (8, 500), (9, 250), (18, 0)], device.writes
+    assert device.writes == [(9, 400), (8, 330), (18, 1), (19, 2), (18, 0)], device.writes
 
 
 async def daemon_read_only(device):

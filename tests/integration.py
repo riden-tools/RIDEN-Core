@@ -109,7 +109,13 @@ def run(enabled, model=60067, max_v=6100, max_i=6100, max_ovp=6200, max_ocp=6200
             assert call(port,cmd='write',start=82,values=[max_ovp])['ok']
             assert call(port,cmd='write',start=83,values=[max_ocp])['ok']
             assert call(port,cmd='write',start=15,values=[1])['ok']
-            assert call(port,cmd='write',start=19,values=[0])['ok']
+            before=sum(fn==6 and st==19 for fn,st,n in d.requests)
+            for invalid in (0, 10, 65535):
+                assert call(port,cmd='write',start=19,values=[invalid])['error']==-6
+            assert sum(fn==6 and st==19 for fn,st,n in d.requests)==before
+            for slot in (1, 9):
+                assert call(port,cmd='write',start=19,values=[slot])['ok']
+                assert d.reg[19]==slot
             assert call(port,cmd='write',start=116,values=[max_v,max_i,max_ovp,max_ocp])['ok']
             assert d.reg[116:120]==[max_v,max_i,max_ovp,max_ocp]
             assert call(port,cmd='write',start=116,values=[max_v+1,max_i,max_ovp,max_ocp])['error']==-6

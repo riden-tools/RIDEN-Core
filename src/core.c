@@ -196,6 +196,7 @@ int rc_get_register_info(uint16_t model, uint16_t address, rc_register_info *inf
         break;
     case 19:
         info->writable = 1;
+        info->raw_min = 1;
         info->raw_max = 9;
         break;
     default:
@@ -327,14 +328,7 @@ static int write_policy(unsigned model, uint16_t s, uint16_t n, const uint16_t *
             return e;
         if (!reg.writable)
             return supported ? RC_READ_ONLY : RC_UNSUPPORTED;
-        if ((a == 8 || a == 9 || (a >= 80 && a <= 119)) && !supported)
-            return RC_UNSUPPORTED;
-        if (a == 8 || a == 9 || (a >= 80 && a <= 119)) {
-            if (v[i] > reg.raw_max)
-                return RC_RANGE;
-        } else if ((a == 15 || a == 18) && v[i] > 1)
-            return RC_RANGE;
-        else if (a == 72 && v[i] > reg.raw_max)
+        if (v[i] < reg.raw_min || v[i] > reg.raw_max)
             return RC_RANGE;
     }
     return 0;
@@ -423,8 +417,11 @@ static void *worker(void *arg) {
             failures = 0;
             if (fn == 3)
                 merge(c, start, count, values, sent, done);
-            else
+            else {
                 memset(c->cache.valid + start, 0, count);
+                if (start <= 19 && start + count > 19)
+                    memset(c->cache.valid + 8, 0, 2);
+            }
             if (identify)
                 identify = 0;
         }

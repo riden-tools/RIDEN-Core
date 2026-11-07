@@ -60,6 +60,8 @@ int main(void) {
     rc_model_info unknown;
     assert(rc_get_model_info(60125, &unknown) == RC_UNSUPPORTED);
     rc_register_info reg;
+    assert(rc_get_register_info(60067, 19, &reg) == RC_OK && reg.writable &&
+           reg.raw_min == 1 && reg.raw_max == 9);
     rc_model_info custom = {12345, NULL, 1000, 10000, 61, 6.1, 62, 6.2};
     assert(rc_get_register_info(12345, 8, &reg) == RC_OK && !reg.writable);
     assert(rc_register_model(&custom) == RC_OK);
